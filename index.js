@@ -7,3 +7,7 @@ app.listen(PORT, () => {
 }).on('error', (err) => {
   console.error('Erro no servidor:', err);
 });
+
+app.get('/', (req, res) => {
+  res.send('API está rodando com sucesso 🚀');
+});
