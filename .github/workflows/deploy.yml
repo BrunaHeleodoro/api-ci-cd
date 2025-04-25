@@ -1,0 +1,28 @@
+name: Deploy para o Railway
+
+on:
+  workflow_run:
+    workflows: ["Run tests"]  # Nome do workflow de testes
+    types:
+      - completed
+
+jjobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}  # Só roda se o workflow de testes for bem-sucedido
+
+    steps:
+      - name: Clonar o repositório
+        uses: actions/checkout@v3
+
+      - name: Instalar o Railway CLI
+        run: npm install -g railway
+
+      - name: Login no Railway com token
+        run: railway login --token ${{ secrets.RAILWAY_TOKEN }}
+
+      - name: Fazer o deploy no Railway
+        run: railway up
+
+
+
