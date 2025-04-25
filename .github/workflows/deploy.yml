@@ -16,9 +16,9 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Instalar o Railway CLI
-        run: npm install -g railway
+        run: npm install -g @railway/cli
 
-      - name: Login no Railway com token
+      - name: Railway Login
         run: railway login --token ${{ secrets.RAILWAY_TOKEN }}
 
       - name: Fazer o deploy no Railway
