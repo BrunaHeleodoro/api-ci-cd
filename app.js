@@ -12,7 +12,6 @@ app.get('/health', (req, res) => {
       { id: 1, name: 'Bruna' },
       { id: 2, name: 'Aura' },
       { id: 3, name: 'Marina' },
-      { id: 4, name: 'Katia' }
     ]);
   });
 
